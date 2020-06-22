@@ -1,5 +1,6 @@
 ### 인테리어 사업하는 언니에게 공부삼아 웹사이트 만들어주기 TOY_PROJECT
 
+--
 
 ## Project setup
 ```
