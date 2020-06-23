@@ -1,3 +1,12 @@
+@charset "utf-8";
+@font-face {
+  font-family: 'Noto Sans KR';
+  src: url(../font/NotoSansCJKkr-DemiLight.otf) format('opentype');
+}
+@font-face{
+  font-family: 'Komorebi';
+  src: url(../font/komorebi-gothic-P.ttf) format('opentype');
+}
 /* 
   width 값에 따른 font-size 조절
  */
@@ -17,3 +26,14 @@
 @media (min-width:800px) and (max-width:839px){html{font-size:22px;}}
 @media (min-width:840px) and (max-width:879px){html{font-size:23px;}}
 @media (min-width:880px){html{font-size:24px;}}
+
+#brand_en{ font-family: 'Noto Sans KR'; font-size: 1rem; color: #595757; }
+#brand_kr{ font-family: 'Komorebi'; font-size: 1rem; color: #898989; }
+
+.brand{ float: left; }
+.nav_horizon { text-align: right; }
+.nav_horizon > li{  display: inline;  padding-left: 18px; }
+.nav_line{ color: #9fa0a0; opacity: 60%; }
+
+#move_sns{ font-family: 'Noto Sans KR'; font-size: 0.5rem; color: #9fa0a0; }
+#move_page{ font-family: 'Noto Sans KR'; font-size: 0.5rem; color: #727171; }
