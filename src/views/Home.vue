@@ -1,33 +1,32 @@
 <template>
   <div class="home">
-    <div class="side-container"></div>
+    <div></div>
+
     <div class="main-container">
-      <Navi></Navi>
-      <Content></Content>
+      <Navi />
+      <router-view />
+      <Bottom />
     </div>
-    <div class="side-container"></div>
+
+    <div></div>
   </div>
 </template>
 
 <script>
 import Navi from "../components/Navi";
-// import ScrollNavi from "../components/ScrollNavi";
-import Content from "../components/Content"
-// import Bottom from "../components/Bottom"
+import Bottom from "../components/Bottom"
 
 export default {
   components: {
     Navi,
-    // ScrollNavi
-    Content
-    // Bottom
+    Bottom
   }
 }
 </script>
 
 <style scoped>
 .main-container{
-  width: 80%;
+  width: 60%;
   margin: 0 auto;
 }
 </style>

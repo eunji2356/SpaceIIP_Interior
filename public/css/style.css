@@ -7,6 +7,11 @@
   font-family: 'Komorebi';
   src: url(../font/komorebi-gothic-P.ttf) format('opentype');
 }
+@font-face{
+  font-family: 'HY Gothic';
+  src: url(../font/HY-gothic.ttf) format('opentype');
+}
+
 /* 
   width 값에 따른 font-size 조절
  */
@@ -27,6 +32,7 @@
 @media (min-width:840px) and (max-width:879px){html{font-size:23px;}}
 @media (min-width:880px){html{font-size:24px;}}
 
+/* Navi.vue - CSS */
 #brand_en{ font-family: 'Noto Sans KR'; font-size: 1rem; color: #595757; }
 #brand_kr{ font-family: 'Komorebi'; font-size: 1rem; color: #898989; }
 
@@ -37,3 +43,28 @@
 
 #move_sns{ font-family: 'Noto Sans KR'; font-size: 0.5rem; color: #9fa0a0; }
 #move_page{ font-family: 'Noto Sans KR'; font-size: 0.5rem; color: #727171; }
+
+/* Bottom.vue - CSS */
+.bottom_vertical > li{ font-family: 'HY Gothic'; font-size: 0.8rem; color: #9fa0a0; text-align: center; }
+.bottom_line { color: #9fa0a0; opacity: 60%; }
+
+/* Cotent.vue - CSS */
+.component-content { width: 100%; text-align: center; }
+.main_img { padding-left: 1%; padding-right: 1%; width: 50%; }
+.layout-table { display: table; table-layout: fixed; }
+.layout-table > div { display: table-cell; vertical-align: middle; position: relative; }
+.layout-table > div > img { width: 100%; }
+.layout-table > div > p { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: 'Noto Sans KR'; font-size: 1.2rem; color: white; }
+
+/* AboutUs.vue - CSS */
+.component-aboutUs{ width: 100%; text-align: center; }
+.aboutUs_img{ width: 50%; }
+
+/* Process.vue - CSS */
+.component-process{ width: 100%; text-align: center; }
+.process_txt{ font-size: 0.8rem; font-family: 'Noto Sans KR'; color: #595757; margin-top: 1rem; margin-bottom: 1rem;}
+.process_img{ width: 100%; }
+
+/* Portfolio.vue - CSS */
+.component-portfolio{ width: 100%; text-align: center; }
+.portfolio_img{ width: 100%;}

@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-// import Navi from '../components/Navi.vue'
-// import Content from '../components/Content.vue'
-import Bottom from '../components/Bottom.vue'
+import Content from '../components/Content.vue'
+import AboutUs from '../components/AboutUs.vue'
+import Portfolio from '../components/Portfolio.vue'
+import Process from '../components/Process.vue'
 
 Vue.use(VueRouter)
 
@@ -11,24 +12,26 @@ Vue.use(VueRouter)
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    children: [
+      {
+        path: '/',
+        component: Content
+      },
+      {
+        path: '/aboutUs',
+        component: AboutUs
+      },
+      {
+        path: '/portfolio',
+        component: Portfolio
+      },
+      {
+        path: '/process',
+        component: Process
+      }
+    ]
   }
-  ,
-  {
-    path: '/bottom',
-    name: 'Bottom',
-    component: Bottom
-  }
-  // {
-  //   path: '/navi',
-  //   name: 'Navi',
-  //   component: Navi
-  // },
-  // {
-  //   path: '/content',
-  //   name: 'Content',
-  //   component: Content
-  // }
 ]
 
 const router = new VueRouter({
