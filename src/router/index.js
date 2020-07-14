@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Content from '../components/Content.vue'
 import AboutUs from '../components/AboutUs.vue'
 import Portfolio from '../components/Portfolio.vue'
+import PortfolioDetail from '../components/PortfolioDetail.vue'
 import Process from '../components/Process.vue'
 
 Vue.use(VueRouter)
@@ -29,6 +30,12 @@ Vue.use(VueRouter)
       {
         path: '/process',
         component: Process
+      },
+      {
+        path: '/portfolio/detail/:portfolioKey',
+        name: 'portfolioDetail',
+        component: PortfolioDetail,
+        props: true
       }
     ]
   }

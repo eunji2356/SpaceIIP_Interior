@@ -66,5 +66,8 @@
 .process_img{ width: 100%; }
 
 /* Portfolio.vue - CSS */
-.component-portfolio{ width: 100%; text-align: center; }
+.component-portfolio{ width: 100%; display: flex; flex-wrap: wrap; }
+.content-list{ width: calc(100%/3); float: left; }
+.content-list-item-img{ width: 100%; height: calc(2*(60vw/3)/3); padding-left: 0.1rem; padding-right: 0.1rem;}
+.content-list-item-title{ margin-left: 0.2rem; margin-top: 0.2rem; margin-right: 0.2rem; font-family: 'Noto Sans KR'; color: #727171; font-size: 0.5rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .portfolio_img{ width: 100%;}
