@@ -7,7 +7,7 @@ export default new Vuex.Store({
   state: {
     list: [
       {
-        img: 'img/main01.jpg',
+        img: "img/main01.jpg",
         title: "글 제목 1 "
       },
       {
@@ -26,7 +26,12 @@ export default new Vuex.Store({
         img: 'img/main01.jpg',
         title: "글 제목 5"
       },
-    ]
+    ],
+    addData:{
+      title: "",
+      description: "",
+      img: []
+    }
   },
   mutations: {
   },

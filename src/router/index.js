@@ -6,6 +6,7 @@ import AboutUs from '../components/AboutUs.vue'
 import Portfolio from '../components/Portfolio.vue'
 import PortfolioDetail from '../components/PortfolioDetail.vue'
 import Process from '../components/Process.vue'
+import Admin from '../components/Admin.vue'
 
 Vue.use(VueRouter)
 
@@ -36,13 +37,18 @@ Vue.use(VueRouter)
         name: 'portfolioDetail',
         component: PortfolioDetail,
         props: true
+      },
+      {
+        path: '/admin',
+        component: Admin
       }
     ]
   }
 ]
 
 const router = new VueRouter({
-  routes
+  mode: 'history',
+  routes: routes
 })
 
 export default router

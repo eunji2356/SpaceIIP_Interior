@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <link rel="stylesheet" href="./css/reset.css" />
     <link rel="stylesheet" href="./css/style.css" />
+    <link rel="icon" href="./img/icon.ico">
     <title>공 간 이 입 [空 間 移 入]</title>
   </head>
   <body>
@@ -15,24 +15,31 @@
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
 
-  <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-analytics.js"></script>
-  <script>
-    // Your web app's Firebase configuration
-    var firebaseConfig = {
-      apiKey: "AIzaSyAjpqPbyJjeuk-2nqZGrWdok4Ku01l42gQ",
-      authDomain: "space-transfer-f3904.firebaseapp.com",
-      databaseURL: "https://space-transfer-f3904.firebaseio.com",
-      projectId: "space-transfer-f3904",
-      storageBucket: "space-transfer-f3904.appspot.com",
-      messagingSenderId: "586031903519",
-      appId: "1:586031903519:web:a55c29bc96ff893e28f62a",
-      measurementId: "G-YHEKWQWY4N"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    firebase.analytics();
-  </script>
+    <!-- VueFire -->
+    <script src="https://unpkg.com/vuefire/dist/vuefire.js"></script> 
+    
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-function.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-analytics.js"></script>
+    <!-- <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyAjpqPbyJjeuk-2nqZGrWdok4Ku01l42gQ",
+        authDomain: "space-transfer-f3904.firebaseapp.com",
+        databaseURL: "https://space-transfer-f3904.firebaseio.com",
+        projectId: "space-transfer-f3904",
+        storageBucket: "space-transfer-f3904.appspot.com",
+        messagingSenderId: "586031903519",
+        appId: "1:586031903519:web:a55c29bc96ff893e28f62a",
+        measurementId: "G-YHEKWQWY4N"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+    </script> -->
   </body>
 </html>

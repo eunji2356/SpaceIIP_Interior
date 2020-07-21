@@ -11,7 +11,8 @@
     "bootstrap": "^4.5.0",
     "bootstrap-vue": "^2.15.0",
     "core-js": "^3.6.5",
-    "firebase": "^7.14.6",
+    "express": "^4.17.1",
+    "firebase": "^7.16.0",
     "reset-css": "^5.0.1",
     "vue": "^2.6.11",
     "vue-blu": "^0.1.9",
@@ -48,5 +49,17 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "description": "( 안드로이드 개발자가 Vue.js 로 웹사이트 만들어보기 )",
+  "main": "babel.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eunji2356/SpaceIIP_Interior.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eunji2356/SpaceIIP_Interior/issues"
+  },
+  "homepage": "https://github.com/eunji2356/SpaceIIP_Interior#readme"
 }
