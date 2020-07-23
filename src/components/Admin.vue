@@ -23,10 +23,10 @@ export default {
             console.log('description : ', this.description)
             
             this.img = [
-                "img/main01.jpg",
                 "img/main02.jpg",
                 "img/main01.jpg",
                 "img/main02.jpg",
+                "img/main01.jpg",
             ];
 
             firebase.firestore()
