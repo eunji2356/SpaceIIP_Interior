@@ -3,7 +3,7 @@
     <div class="content-list"
       v-for="(content, contentIndex) in portfolioList"
       v-bind:key="`content-list-${contentIndex}`"
-      @click="onClickItem()">
+      @click="onClickItem(contentIndex)">
 
         <img class="content-list-item-img" :src="portfolioList[contentIndex].img[0]">
         <p class="content-list-item-title">{{ portfolioList[contentIndex].title }}</p>
@@ -27,8 +27,8 @@ export default {
     clickInsta(){
       location.replace('https://www.instagram.com/space_iip36.5_official/')
     },
-    onClickItem(){
-      // this.$router.push({ path: `/portfolio/detail/${portfolioKey}` })
+    onClickItem(contentIndex){
+      this.$router.push({ path: `/portfolio/detail/${contentIndex}` })
     }
   },
   created(){

@@ -63,7 +63,7 @@
 /* Process.vue - CSS */
 .component-process{ width: 100%; text-align: center; }
 .process_txt{ font-size: 0.8rem; font-family: 'Noto Sans KR'; color: #595757; margin-top: 1rem; margin-bottom: 1rem;}
-.process_img{ width: 100%; }
+.process_img{ width: 50%; }
 
 /* Portfolio.vue - CSS */
 .component-portfolio{ width: 100%; display: flex; flex-wrap: wrap; }
