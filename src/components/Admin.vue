@@ -10,7 +10,6 @@
         <span>이미지 추가</span>
         <input class="btn_upload" @change="selectFile" type="file" name="files" multiple>
       </div>
-      <span>{{this.imageName}}</span>
 
       <button class="btn_add" @click="addBtn">추가하기</button>
   </div>
@@ -18,76 +17,67 @@
 
 <script>
 import firebase from 'firebase'
-// import storage from 'firebase/storage' 
 
 export default {
     data(){
         return {
             title: '',
             description: '',
-            img: [],
+            pk: [],
             imageUrl: [],
             imageFile: [],
             imageName: []
         }
     },
     methods: {
+        // uuidv4(){
+        //     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        //         var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+        //         return v.toString(16);
+        //     });
+        // },
         selectFile(e){
             const files = e.target.files;
             if (files.length !== 0) {
+                console.log(">>>>> files length", files.length)
                 for(var i = 0; i < files.length; i++){
-                    this.imageName[i] = files[i].name;
-                    console.log("imageName", this.imageName[i])
                     if (this.imageName[i].lastIndexOf(".") <= 0) {
-                        console.log("return?????")
                         return;
                     }
+                    this.imageName[i] = files[i].name;
+                    this.imageFile[i] = files[i];
+                    this.imageUrl[i] = `portfolio/${files[i].name}`;
 
-                    const fr = new FileReader();
-                    fr.readAsDataURL(files[i]);
-                    fr.addEventListener("load", () => {
-                        this.imageUrl[i] = fr.result;
-                        // console.log("@@@@ imageUrl", this.imageUrl);
-                        this.imageFile[i] = files[i];
-                        console.log("@@@@ imageFile", this.imageFile);
-                    });
+                    // console.log('>>>>>>> uuid', uuidv4());
+                    // this.pk[i] = uuidv4();
                 }
             }
             else {
-                console.log("여기로???")
+                this.pk = [];
                 this.imageName = [];
                 this.imageFile = [];
                 this.imageUrl = [];
             }
         },
         addBtn(){
-            console.log('title :', this.title)
-            console.log('description : ', this.description)
-            
-            // this.img = [
-            //     "img/main02.jpg",
-            //     "img/main01.jpg",
-            //     "img/main02.jpg",
-            //     "img/main01.jpg",
-            // ];
-
-            for(var i; i < this.imageName.length; i++){
-                firebase.storage.ref('images/' + this.imageName[i]).put(this.imageFile[i])
+            //Firebase Storage 파일 추가 ( 파일 추가 )
+            for(var i = 0; i < this.imageName.length; i++){
+                var storageRef = firebase.storage().ref(`portfolio/${this.imageFile[i].name}`)
+                storageRef.put(this.imageFile[i]).then(snapshot => {
+                    console.log('upload file success!!!  ', snapshot)
+                })
             }
 
-            // firebase.firestore()
-            // .collection("portfolio")
-            // .add({
-            //     title: this.title,
-            //     description: this.description,
-            //     img: this.imageName
-            // })
-            // .then(function(){
-            //     console.log(">>>> saved!!! 저장 !!");
-            // })
-            // .catch(function(error){
-            //     console.error(">>>> ERROR :", error)
-            // });
+            //Firebase Cloud FireStore 실시간 디비 사용 ( 데이터 추가 )
+            firebase.firestore().collection("portfolio").add({
+                title: this.title,
+                description: this.description,
+                img: this.imageUrl                
+            }).then(function(){
+                console.log(">>>> saved!!! 저장 !!");
+            }).catch(function(error){
+                console.error(">>>> ERROR :", error)
+            });
         }
     }
 }

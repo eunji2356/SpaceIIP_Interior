@@ -4,8 +4,6 @@ import router from './router'
 import store from './store'
 import firebase from 'firebase'
 
-import PortfolioPlugin from './plugin/portfolio'
-
 import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -26,8 +24,6 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
-
-Vue.use(PortfolioPlugin)
 
 new Vue({
   router,
