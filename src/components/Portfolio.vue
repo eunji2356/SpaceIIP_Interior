@@ -30,29 +30,26 @@ export default {
     loadDB() {
       firebase.firestore().collection("portfolio").get()
       .then(querySnapshot => {
-        console.log('@@@@  ', querySnapshot)
         querySnapshot.forEach(doc => {
-          console.log('>>>>   ', doc.data())
           var title = doc.data().title;
           var description = doc.data().description;
           var img = doc.data().img;
+          var pk = doc.data().pk;
 
           this.portfolioList.push(
             {
               'title': title, 
               'description': description, 
-              'img': img
+              'img': img,
+              'pk': pk
             }
           )
         })
-
         this.setImageUrl()
       })
       .catch(function(error){
         console.log("Error : ",error);
       })
-
-      console.log("portfolioList : ", this.portfolioList);
     },
     async setImageUrl() {
       for ( let index = 0, portfolioSize = this.portfolioList.length; index < portfolioSize; index++ ) {
@@ -61,22 +58,17 @@ export default {
       }
     },
     loadStorageImageUrl(index, imageName) {
-      console.log('이미지 로드')
-
       let storageRef = firebase.storage().ref()
       storageRef.child(imageName).getDownloadURL().then(url => {
-        console.log('>>>> ', index, ' : ', url)
         this.$set(this.portfolioList[index], 'storageUrl', url)
       })
-      // .catch(){
-        //기본 이미지 세팅       
-      // }
     },
     clickInsta(){
       location.replace('https://www.instagram.com/space_iip36.5_official/')
     },
     onClickItem(contentIndex){
-      this.$router.push({path: `/portfolio/detail/${this.portfolioList[contentIndex]}`})
+      var portfolioKey = this.portfolioList[contentIndex].pk;
+      this.$router.push({path: `/portfolio/detail/${portfolioKey}`});
     }
   },
 }
