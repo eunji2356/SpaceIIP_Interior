@@ -30,7 +30,8 @@ export default {
   },
   methods: {
     loadDB() {
-      firebase.firestore().collection("portfolio").get()
+      firebase.firestore().collection("portfolio")
+      .orderBy('date', 'desc').get()
       .then(querySnapshot => {
         querySnapshot.forEach(doc => {
           var title = doc.data().title;

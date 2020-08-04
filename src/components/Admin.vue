@@ -71,7 +71,8 @@ export default {
                 pk: _pk,
                 title: this.title,
                 description: this.description.replace(/(\n|\r\n)/g, '<br/>'),
-                img: this.imageUrl                
+                img: this.imageUrl,
+                date: Date()              
             })
             .then(function(){
                 console.log(">>>> saved!!! 저장 !!");
