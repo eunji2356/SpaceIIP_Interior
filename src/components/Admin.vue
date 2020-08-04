@@ -70,11 +70,15 @@ export default {
             firebase.firestore().collection("portfolio").doc(_pk).set({
                 pk: _pk,
                 title: this.title,
-                description: this.description,
+                description: this.description.replace(/(\n|\r\n)/g, '<br/>'),
                 img: this.imageUrl                
-            }).then(function(){
+            })
+            .then(function(){
                 console.log(">>>> saved!!! 저장 !!");
-            }).catch(function(error){
+                alert('업로드가 완료되었습니다 !');
+                location.reload(true);
+            })
+            .catch(function(error){
                 console.error(">>>> ERROR :", error)
             });
         }

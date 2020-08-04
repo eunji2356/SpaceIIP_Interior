@@ -9,7 +9,9 @@
         <p class="content-list-item-title">{{ portfolioList[contentIndex].title }}</p>
     </div>
 
-    <img class="portfolio_img" src="img/insta_img.jpg" @click="clickInsta">
+    <div class="layout-insta">
+      <img class="portfolio_img" src="img/insta_img.jpg" @click="clickInsta">
+    </div>
   </div>
 </template>
 
@@ -73,3 +75,14 @@ export default {
   },
 }
 </script>
+
+<style scope>
+.layout-insta {
+  width: 100%;
+}
+
+.layout-insta > img {
+  max-width: 100%;
+  height: auto;
+}
+</style>

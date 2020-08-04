@@ -37,12 +37,15 @@
 #brand_kr{ font-family: 'Komorebi'; font-size: 1rem; color: #898989; }
 
 .brand{ float: left; }
-.nav_horizon { text-align: right; }
+.nav_horizon { text-align: right;}
 .nav_horizon > li{  display: inline;  padding-left: 18px; }
 .nav_line{ color: #9fa0a0; opacity: 60%; }
 
 #move_sns{ font-family: 'Noto Sans KR'; font-size: 0.5rem; color: #9fa0a0; }
 #move_page{ font-family: 'Noto Sans KR'; font-size: 0.5rem; color: #727171; }
+
+#toggle_sns{ color: #9fa0a0; }
+#toggle_page{  color: #727171; margin-bottom: 0.3rem; }
 
 /* Bottom.vue - CSS */
 .bottom_vertical > li{ font-family: 'HY Gothic'; font-size: 0.8rem; color: #9fa0a0; text-align: center; }
@@ -54,7 +57,7 @@
 .layout-table { display: table; table-layout: fixed; }
 .layout-table > div { display: table-cell; vertical-align: middle; position: relative; }
 .layout-table > div > img { width: 100%; }
-.layout-table > div > p { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: 'Noto Sans KR'; font-size: 1.2rem; color: white; }
+.layout-table > div > p { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: 'Noto Sans KR'; font-size: 1rem; color: white; }
 
 /* AboutUs.vue - CSS */
 .component-aboutUs{ width: 100%; text-align: center; }

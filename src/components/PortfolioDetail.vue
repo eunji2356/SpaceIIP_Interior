@@ -2,10 +2,10 @@
   <div class="component component-portfolio-detail">
     <div class="detail-top">
       <span class="title">{{ title }}</span>
-      <span class="list">목록</span>
+      <span class="list" @click="clickList">목록</span>
     </div>
 
-    <div class="detail-description">{{ description }}</div>
+    <div v-html="description" class="detail-description"></div>
 
     <div class="detail-img" v-for="(image, index) in img" v-bind:key="`detail-image-${index}`">
       <img class="detail-img-index" :src="img[index]">
@@ -56,6 +56,9 @@ export default {
       storageRef.child(imageName).getDownloadURL().then(url => {
         this.$set(this.img, index, url)
       })
+    },
+    clickList(){
+      this.$router.push({path: `/portfolio`});
     }
   }
 }
