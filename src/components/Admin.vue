@@ -1,31 +1,47 @@
 <template>
-  <div class="component component-admin">
-      <span>제목</span>
-      <textarea class="add title" type="text" v-model="title"/>
-      
-      <span>설명</span>
-      <textarea class="add description" type="text" v-model="description"/>
+    <div class="component component-admin">
+        <span>제목</span>
+        <textarea class="add title" type="text" v-model="title"/>
+        
+        <span>설명</span>
+        <textarea class="add description" type="text" v-model="description"/>
 
-      <div class="add img">
-        <span>이미지 추가</span>
-        <input class="btn_upload" @change="selectFile" type="file" name="files" multiple>
-      </div>
+        <div class="add img">
+            <span>이미지 추가</span>
+            <input class="btn_upload" @change="selectFile" type="file" name="files" multiple>
+        </div>
+
+        <label v-if="isDrag" class="admin-drag-tip">★★★ 파일명을 드래그하여 이미지 순서를 변경해보세요 ★★★</label>
+
+        <draggable 
+        :list="imageUrl"
+        :move="checkMove"
+        @start="dragging=true"
+        @end="dragging=false">
+            <div v-for="(item, index) in imageUrl.length" v-bind:key="`admin-file-${index}`" >
+                <label class="admin-drag-item">{{ `${imageUrl[index].substring(imageUrl[index].lastIndexOf("/")+1)}` }}</label>
+            </div>
+        </draggable>
 
       <button class="btn_add" @click="addBtn">추가하기</button>
   </div>
 </template>
 
 <script>
+import draggable from 'vuedraggable'
 import firebase from 'firebase'
 
 export default {
+    components: {
+        draggable
+    },
     data(){
         return {
             title: '',
             description: '',
             imageUrl: [],
             imageFile: [],
-            imageName: []
+            isDrag: false
         }
     },
     methods: {
@@ -36,30 +52,28 @@ export default {
             });
         },
         selectFile(e){
+            this.imageFile = [];
+            this.imageUrl = [];
+            this.isDrag = false;
+
             const files = e.target.files;
             if (files.length !== 0) {
-                console.log(">>>>> files length", files.length)
                 for(var i = 0; i < files.length; i++){
-                    this.imageName[i] = files[i].name;
-                    if (this.imageName[i].lastIndexOf(".") <= 0) {
-                        return;
-                    }
                     this.imageFile[i] = files[i];
                     this.imageUrl[i] = `portfolio/${files[i].name}`;
                 }
-            }
-            else {
-                this.imageName = [];
-                this.imageFile = [];
-                this.imageUrl = [];
+
+                if(this.imageUrl.length != 0){
+                    this.isDrag = true;
+                }
             }
         },
         addBtn(){
             //Firebase Storage 파일 추가 ( 파일 추가 )
-            for(var i = 0; i < this.imageName.length; i++){
+            for(var i = 0; i < this.imageFile.length; i++){
                 var storageRef = firebase.storage().ref(`portfolio/${this.imageFile[i].name}`)
                 storageRef.put(this.imageFile[i]).then(snapshot => {
-                    console.log('upload file success!!!  ', snapshot);
+                    console.log('upload file success!!!  ', snapshot.metadata.name);
                 })
             }
 
@@ -76,12 +90,15 @@ export default {
             })
             .then(function(){
                 console.log(">>>> saved!!! 저장 !!");
-                alert('업로드가 완료되었습니다 !');
-                location.reload(true);
+                // alert('업로드가 완료되었습니다 !');
+                // location.reload(true);
             })
             .catch(function(error){
                 console.error(">>>> ERROR :", error)
             });
+        },
+        checkMove: function(e) {
+            window.console.log("Future index: " + e.draggedContext.futureIndex);
         }
     }
 }
@@ -99,5 +116,12 @@ export default {
 .btn_add{
     margin-top: 3rem;
     width: 100%;
+}
+.admin-drag-tip{
+    font-family: 'Noto Sans KR'; 
+    font-size: 0.8rem;
+}
+.admin-drag-item{
+    font-family: 'Noto Sans KR'; color: #595757; 
 }
 </style>
