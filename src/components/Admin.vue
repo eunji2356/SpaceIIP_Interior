@@ -70,10 +70,17 @@ export default {
         },
         addBtn(){
             //Firebase Storage 파일 추가 ( 파일 추가 )
+            var count = 0;
             for(var i = 0; i < this.imageFile.length; i++){
                 var storageRef = firebase.storage().ref(`portfolio/${this.imageFile[i].name}`)
                 storageRef.put(this.imageFile[i]).then(snapshot => {
                     console.log('upload file success!!!  ', snapshot.metadata.name);
+                    count++;
+
+                    if(count === this.imageFile.length){
+                        alert('업로드가 완료되었습니다 !');
+                        location.reload(true);
+                    }
                 })
             }
 
@@ -90,8 +97,6 @@ export default {
             })
             .then(function(){
                 console.log(">>>> saved!!! 저장 !!");
-                // alert('업로드가 완료되었습니다 !');
-                // location.reload(true);
             })
             .catch(function(error){
                 console.error(">>>> ERROR :", error)
